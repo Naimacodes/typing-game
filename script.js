@@ -5,7 +5,7 @@ const timeEl = document.getElementById('time');
 const endgameEl = document.getElementById('end-game-container');
 const settingsBtn = document.getElementById('settings-btn');
 const settings = document.getElementById('settings');
-const settingsForm = document.getElementById('settings-form');
+const settingsForm = document.getElementById('setting-form');
 const difficultySelect = document.getElementById('difficulty');
 
 //List of words for the game
@@ -58,6 +58,8 @@ let score = 0;
 //Initialize time
 let time = 10;
 
+let difficulty = "medium";
+
 //focus text on start
 text.focus();
 
@@ -103,7 +105,7 @@ function gameOver() {
   endgameEl.innerHTML = `
   <h1>Time ran out!</h1>
   <p>You final score is ${score}.</p>
-  <button onclick="location.reload"()>Reload</button>`;
+  <button onclick="location.reload()">Reload</button>`;
   endgameEl.style.display = 'flex';
 }
 
@@ -120,5 +122,21 @@ text.addEventListener('input', e => {
 
     //clear
     e.target.value = '';
+    time+=2;
+
+    updateTime()
   }
 });
+
+//settings btn click
+
+settingsBtn.addEventListener('click', () => {
+settings.classList.toggle('hide') 
+})
+
+//settings select
+
+settingsForm.addEventListener('change', e => {
+  difficulty= e.target.value;
+  console.log(difficulty)
+})
