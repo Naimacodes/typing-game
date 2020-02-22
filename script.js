@@ -58,7 +58,18 @@ let score = 0;
 //Initialize time
 let time = 10;
 
-let difficulty = "medium";
+//set dificulty to value in localStorage or medium
+
+let difficulty =
+  localStorage.getItem('difficulty') !== null
+    ? localStorage.getItem('difficulty')
+    : 'medium';
+
+  
+//Set difficulty select value
+difficultySelect.value= localStorage.getItem('difficulty') !== null
+? localStorage.getItem('difficulty')
+: 'medium';
 
 //focus text on start
 text.focus();
@@ -122,21 +133,28 @@ text.addEventListener('input', e => {
 
     //clear
     e.target.value = '';
-    time+=2;
+    if (difficulty === 'hard'){
+      time += 2;
+    } else if (difficulty === 'medium'){
+      time += 3;
+    }else {
+      time += 5;
+    }
 
-    updateTime()
+    updateTime();
   }
 });
 
 //settings btn click
 
 settingsBtn.addEventListener('click', () => {
-settings.classList.toggle('hide') 
-})
+  settings.classList.toggle('hide');
+});
 
 //settings select
 
 settingsForm.addEventListener('change', e => {
-  difficulty= e.target.value;
-  console.log(difficulty)
-})
+  difficulty = e.target.value;
+  console.log(difficulty);
+  localStorage.setItem('difficulty', difficulty);
+});
