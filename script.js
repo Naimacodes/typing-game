@@ -47,3 +47,21 @@ const words = [
   'oven',
   'share'
 ];
+
+
+//Initialize word
+
+let randomWord;
+
+//Initialize score
+let score= 0;
+
+//Initialize time
+let time= 10;
+
+//generate Random word from array
+function getRandomWord () {
+  return words[Math.floor(Math.random()* words.length)]
+  }
+
+  console.log(getRandomWord())
