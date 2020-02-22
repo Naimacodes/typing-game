@@ -59,6 +59,12 @@ let score= 0;
 //Initialize time
 let time= 10;
 
+//focus text on start
+text.focus()
+
+//start teh countdown
+const timeInterval= setInterval(updateTime, 1000)
+
 //generate Random word from array
 function getRandomWord () {
   return words[Math.floor(Math.random()* words.length)]
@@ -72,12 +78,24 @@ const addWordToDom = () => {
   word.innerHTML= randomWord;
 }
 
+//update Score
+
 function updateScore(){
 score ++;
 scoreEl;innerHTML= score
 }
 
+//update Time
 
+function updateTime(){
+  time --;
+  timeEl.innerHTML= time + 's';
+  if(time === 0){
+    clearInterval(timeInterval)
+    //end game
+    gameOver()
+  }
+}
 
 addWordToDom()
 
