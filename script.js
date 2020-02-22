@@ -65,3 +65,24 @@ function getRandomWord () {
   }
 
   console.log(getRandomWord())
+//add word to dom
+
+const addWordToDom = () => {
+  randomWord = getRandomWord()
+  word.innerHTML= randomWord;
+}
+
+addWordToDom()
+
+//Event Listeners
+
+text.addEventListener("input", e => {
+  const insertedText = e.target.value;
+  console.log(insertedText)
+  if(insertedText === randomWord){
+    addWordToDom()
+
+    //clear
+    e.target.value =""
+  }
+})
