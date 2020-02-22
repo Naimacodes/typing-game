@@ -48,69 +48,77 @@ const words = [
   'share'
 ];
 
-
 //Initialize word
 
 let randomWord;
 
 //Initialize score
-let score= 0;
+let score = 0;
 
 //Initialize time
-let time= 10;
+let time = 10;
 
 //focus text on start
-text.focus()
+text.focus();
 
 //start teh countdown
-const timeInterval= setInterval(updateTime, 1000)
+const timeInterval = setInterval(updateTime, 1000);
 
 //generate Random word from array
-function getRandomWord () {
-  return words[Math.floor(Math.random()* words.length)]
-  }
+function getRandomWord() {
+  return words[Math.floor(Math.random() * words.length)];
+}
 
-  console.log(getRandomWord())
+console.log(getRandomWord());
 //add word to dom
 
 const addWordToDom = () => {
-  randomWord = getRandomWord()
-  word.innerHTML= randomWord;
-}
+  randomWord = getRandomWord();
+  word.innerHTML = randomWord;
+};
 
 //update Score
 
-function updateScore(){
-score ++;
-scoreEl;innerHTML= score
+function updateScore() {
+  score++;
+  scoreEl;
+  innerHTML = score;
 }
 
 //update Time
 
-function updateTime(){
-  time --;
-  timeEl.innerHTML= time + 's';
-  if(time === 0){
-    clearInterval(timeInterval)
+function updateTime() {
+  time--;
+  timeEl.innerHTML = time + 's';
+  if (time === 0) {
+    clearInterval(timeInterval);
     //end game
-    gameOver()
+    gameOver();
   }
 }
 
-addWordToDom()
+//game over show end screen
 
+function gameOver() {
+  endgameEl.innerHTML = `
+  <h1>Time ran out!</h1>
+  <p>You final score is ${score}.</p>
+  <button onclick="location.reload"()>Reload</button>`;
+  endgameEl.style.display = 'flex';
+}
 
+addWordToDom();
 
 //Event Listeners
 
-text.addEventListener("input", e => {
+text.addEventListener('input', e => {
   const insertedText = e.target.value;
-  console.log(insertedText)
-  if(insertedText === randomWord){
-    addWordToDom()
-    updateScore()
+  console.log(insertedText);
+  if (insertedText === randomWord) {
+    addWordToDom();
+    updateScore();
 
     //clear
-    e.target.value =""
+    e.target.value = '';
   }
-})
+});
