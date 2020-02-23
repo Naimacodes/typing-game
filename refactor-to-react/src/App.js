@@ -38,10 +38,10 @@ function App() {
 
   return (
     <div className='App'>
-      <button id='settings-btn' class='settings-btn'>
-        <i class='fas fa-cog'></i>
+      <button id='settings-btn' className='settings-btn'>
+        <i className='fas fa-cog'></i>
       </button>
-      <div id='settings' class='settings'>
+      <div id='settings' className='settings'>
         <form action='' id='setting-form'>
           <div>
             <label for='difficulty'></label>
@@ -54,7 +54,7 @@ function App() {
         </form>
       </div>
 
-      <div class='container'>
+      <div className='container'>
         <h2>Speed Typer</h2>
         <small>Type the following</small>
         <h1 id='word'>{word}</h1>
@@ -66,13 +66,13 @@ function App() {
           onChange={onChange}
           text={text}
         />
-        <p class='time-container'>
+        <p className='time-container'>
           Time left: <span id='time'>10s</span>
         </p>
-        <p class='score-container'>
+        <p className='score-container'>
           Score <span id='score'></span>
         </p>
-        <div id='end-game-container' class='end-game-container'></div>
+        <div id='end-game-container' className='end-game-container'></div>
       </div>
     </div>
   );
