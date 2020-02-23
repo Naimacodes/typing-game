@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import './App.css';
 
@@ -25,16 +25,32 @@ function App() {
     'drag',
     'loving'
   ];
-
+  let initialScore = 0;
   const [text, setText] = useState('');
   const [word, setWord] = useState(
     words[Math.floor(Math.random() * words.length)]
   );
+  const [score, setScore] = useState(initialScore);
 
   const onChange = e => {
-    setText(e.target.value);
-    console.log(text);
+    const insertedText = e.target.value;
+    console.log(insertedText);
+    if (insertedText === word) {
+      
+      setWord(words[Math.floor(Math.random() * words.length)]);
+      updateScore();
+      
+      //clear
+      e.target.value = '';
+    }
   };
+
+  function updateScore() {
+   
+    setScore(prevscore => prevscore + 1)
+  }
+   
+
 
   return (
     <div className='App'>
@@ -70,7 +86,7 @@ function App() {
           Time left: <span id='time'>10s</span>
         </p>
         <p className='score-container'>
-          Score <span id='score'></span>
+          Score= {score} <span id='score'></span>
         </p>
         <div id='end-game-container' className='end-game-container'></div>
       </div>
