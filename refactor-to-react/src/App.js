@@ -46,6 +46,13 @@ function App() {
     if (insertedText === word) {
       setWord(words[Math.floor(Math.random() * words.length)]);
       updateScore();
+      if (difficulty === 'hard'){
+        setTimeLeft(timeLeft + 2);
+      } else if (difficulty === 'medium'){
+        setTimeLeft(timeLeft + 3)
+      }else {
+        setTimeLeft(timeLeft + 2);
+      }
 
       //clear
       e.target.value = '';
