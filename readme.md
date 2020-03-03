@@ -1,6 +1,11 @@
-## Speed Typer Typing Game
+# Speed Typer Typing Game
 
 Game to beat the clock by typing random words
+
+## Preview
+
+![image](/src/preview/speed-typer.PNG)
+
 
 ## Project Specifications
 

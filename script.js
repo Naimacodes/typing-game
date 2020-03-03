@@ -94,8 +94,7 @@ const addWordToDom = () => {
 
 function updateScore() {
   score++;
-  scoreEl;
-  innerHTML = score;
+  scoreEl.innerHTML = score;
 }
 
 //update Time
