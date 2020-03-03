@@ -27,6 +27,7 @@ function App() {
   ];
 
   let initialScore = 0;
+  let seconds = 10;
 
   let difficulty =
     localStorage.getItem('difficulty') !== null
@@ -38,6 +39,7 @@ function App() {
   );
   const [score, setScore] = useState(initialScore);
   const [addClass, setAddClass] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(seconds);
 
   const onChange = e => {
     const insertedText = e.target.value;
@@ -56,15 +58,20 @@ function App() {
       e.target.value = '';
     }
   };
-  ////////////////////////////////////////////////////
-  //update score
 
-  function updateScore() {
+  const difficultySelect = () =>
+    localStorage.getItem('difficulty') !== null
+      ? localStorage.getItem('difficulty')
+      : 'medium';
+
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
+
+  const updateScore = () => {
     setScore(prevscore => prevscore + 1);
-  }
+  };
 
-  //////////////////////////////////////////////////
-  //pick the difficulty and set it to localStorage
   const pickDifficulty = e => {
     difficulty = e.target.value;
     localStorage.setItem('difficulty', difficulty);
@@ -77,10 +84,7 @@ function App() {
   /////////////////////////////////
   //set the countdown
 
-  let seconds = 10;
-
   // initialize timeLeft with the seconds prop
-  const [timeLeft, setTimeLeft] = useState(seconds);
 
   useEffect(() => {
     // exit early when we reach 0
@@ -98,15 +102,6 @@ function App() {
     // add timeLeft as a dependency to re-rerun the effect
     // when we update it
   }, [timeLeft]);
-
-  const difficultySelect = () =>
-    localStorage.getItem('difficulty') !== null
-      ? localStorage.getItem('difficulty')
-      : 'medium';
-
-  const refreshPage = () => {
-    window.location.reload(false);
-  }
 
   return (
     <div className='App'>
