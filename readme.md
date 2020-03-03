@@ -4,7 +4,7 @@ Game to beat the clock by typing random words
 
 ## Preview
 
-![image](/src/preview/speed-typer.PNG)
+![image](/speed-typer.PNG)
 
 
 ## Project Specifications
