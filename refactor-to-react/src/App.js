@@ -112,7 +112,7 @@ function App() {
         <form action='' id='setting-form' onChange={pickDifficulty}>
           <div>
             <label htmlFor='difficulty'></label>
-            <select name='' id='difficulty'>
+            <select name='' id='difficulty' value={difficulty}>
               <option value='easy'>Easy</option>
               <option value='medium'>Medium</option>
               <option value='hard'>Hard</option>
